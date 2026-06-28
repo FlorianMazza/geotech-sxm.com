@@ -205,49 +205,5 @@
     });
   });
 
-  /* ── Soumission formulaires via Formspree (AJAX, sans redirection) ── */
-  function submitForm(formId, successId, errorId, btnId) {
-    var form = qs('#' + formId);
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-
-      var btn = qs('#' + btnId);
-      var origLabel = btn ? btn.innerHTML : '';
-      if (btn) { btn.innerHTML = 'Envoi en cours…'; btn.disabled = true; }
-
-      var successEl = qs('#' + successId);
-      var errorEl   = qs('#' + errorId);
-      if (successEl) successEl.hidden = true;
-      if (errorEl)   errorEl.hidden   = true;
-
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function (res) { return res.json(); })
-      .then(function (json) {
-        if (json.ok || json.success === 'true' || json.success === true) {
-          if (successEl) { successEl.hidden = false; successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-          form.reset();
-          qsa('.file-upload__name').forEach(function (el) { el.textContent = 'Aucun fichier sélectionné'; });
-        } else {
-          if (errorEl) errorEl.hidden = false;
-        }
-      })
-      .catch(function () {
-        if (errorEl) errorEl.hidden = false;
-      })
-      .then(function () {
-        if (btn) { btn.innerHTML = origLabel; btn.disabled = false; }
-      });
-    });
-  }
-
-  submitForm('contactForm',     'contactSuccess',     'contactError',     'contactSubmitBtn');
-  submitForm('candidatureForm', 'candidatureSuccess', 'candidatureError', 'candidatureSubmitBtn');
 
 })();
