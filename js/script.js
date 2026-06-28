@@ -205,46 +205,35 @@
     });
   });
 
-  /* ── Soumission formulaires via Web3Forms ─────────────────── */
-  function submitW3Form(formId, successId, errorId, btnId) {
+  /* ── Soumission formulaires via Formspree (AJAX, sans redirection) ── */
+  function submitForm(formId, successId, errorId, btnId) {
     var form = qs('#' + formId);
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      /* Validation HTML5 native */
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
 
       var btn = qs('#' + btnId);
       var origLabel = btn ? btn.innerHTML : '';
       if (btn) { btn.innerHTML = 'Envoi en cours…'; btn.disabled = true; }
 
-      /* Masquer les messages précédents */
       var successEl = qs('#' + successId);
       var errorEl   = qs('#' + errorId);
       if (successEl) successEl.hidden = true;
       if (errorEl)   errorEl.hidden   = true;
 
-      var data = new FormData(form);
-
-      fetch('https://api.web3forms.com/submit', {
+      fetch(form.action, {
         method: 'POST',
-        body: data
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       })
       .then(function (res) { return res.json(); })
       .then(function (json) {
-        if (json.success) {
-          if (successEl) successEl.hidden = false;
+        if (json.ok) {
+          if (successEl) { successEl.hidden = false; successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
           form.reset();
-          /* Remettre les libellés de fichiers */
-          qsa('.file-upload__name').forEach(function (el) {
-            el.textContent = 'Aucun fichier sélectionné';
-          });
-          /* Scroll vers le message de confirmation */
-          if (successEl) successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          qsa('.file-upload__name').forEach(function (el) { el.textContent = 'Aucun fichier sélectionné'; });
         } else {
           if (errorEl) errorEl.hidden = false;
         }
@@ -258,7 +247,7 @@
     });
   }
 
-  submitW3Form('contactForm',     'contactSuccess',     'contactError',     'contactSubmitBtn');
-  submitW3Form('candidatureForm', 'candidatureSuccess', 'candidatureError', 'candidatureSubmitBtn');
+  submitForm('contactForm',     'contactSuccess',     'contactError',     'contactSubmitBtn');
+  submitForm('candidatureForm', 'candidatureSuccess', 'candidatureError', 'candidatureSubmitBtn');
 
 })();
