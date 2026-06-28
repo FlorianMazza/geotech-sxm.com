@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message envoyé — Geotech Caraïbes</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="images/Logo Geotech Caraibes.png" />
+  <style>
+    .merci-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      text-align: center;
+      padding: 2rem;
+    }
+    .merci-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(34,197,94,.15);
+      border: 2px solid rgba(34,197,94,.4);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem;
+    }
+    .merci-icon svg { color: #4ade80; }
+    .merci-tag {
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .merci-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400; color: var(--white);
+      line-height: 1.2; margin-bottom: 1.25rem;
+    }
+    .merci-title em { font-style: italic; color: var(--orange); }
+    .merci-text {
+      color: rgba(255,255,255,.65);
+      font-size: 1rem; line-height: 1.7;
+      max-width: 480px; margin: 0 auto 2.5rem;
+    }
+    .merci-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .merci-logo { margin-bottom: 3rem; }
+    .merci-logo img { height: 70px; }
+  </style>
+</head>
+<body>
+  <main class="merci-page">
+    <a href="index.html" class="merci-logo">
+      <img src="images/Logo Geotech Caraibes.png" alt="Geotech Caraïbes" />
+    </a>
+    <div class="merci-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="merci-tag">Message reçu</div>
+    <h1 class="merci-title">Merci pour votre<br><em>message.</em></h1>
+    <p class="merci-text">
+      Votre demande a bien été transmise à l'équipe Geotech Caraïbes.<br>
+      David Pivetta vous répondra personnellement sous <strong style="color:var(--white)">48h ouvrées</strong>.
+    </p>
+    <div class="merci-actions">
+      <a href="index.html" class="btn btn--orange btn--lg">← Retour à l'accueil</a>
+      <a href="https://wa.me/590690584418?text=Bonjour%20Geotech%20Cara%C3%AFbes%2C%20suite%20%C3%A0%20mon%20message%20je%20souhaite%20%C3%A9changer." target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">WhatsApp</a>
+    </div>
+  </main>
+</body>
+</html>
