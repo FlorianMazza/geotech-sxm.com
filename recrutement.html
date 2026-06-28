@@ -324,7 +324,10 @@
       <p class="section-sub">Remplissez le formulaire ci-dessous ou contactez-nous directement par WhatsApp. Toutes les candidatures sont examinées par David Pivetta en personne.</p>
     </header>
 
-    <form class="candidature-form reveal" action="mailto:contact@geotech-sxm.com" method="post" enctype="text/plain" novalidate>
+    <form id="candidatureForm" class="candidature-form reveal" method="POST" enctype="multipart/form-data" novalidate>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+      <input type="hidden" name="subject" value="Nouvelle candidature — Geotech Caraïbes" />
+      <input type="hidden" name="from_name" value="Site Geotech Caraïbes — Recrutement" />
       <div class="form-grid">
         <div class="form-field">
           <label for="prenom">Prénom <span aria-hidden="true">*</span></label>
@@ -346,15 +349,15 @@
           <label for="poste">Poste souhaité <span aria-hidden="true">*</span></label>
           <select id="poste" name="poste" required>
             <option value="" disabled selected>Sélectionnez un poste</option>
-            <option value="conducteur-travaux">Conducteur de travaux</option>
-            <option value="chef-chantier">Chef de chantier</option>
-            <option value="conducteur-engins">Conducteur d'engins</option>
-            <option value="chauffeur-pl">Chauffeur PL</option>
-            <option value="canalisateur">Canalisateur</option>
-            <option value="macon-vrd">Maçon VRD</option>
-            <option value="ouvrier-tp">Ouvrier TP</option>
-            <option value="geometre">Géomètre-Topographe</option>
-            <option value="spontanee">Candidature spontanée</option>
+            <option value="Conducteur de travaux">Conducteur de travaux</option>
+            <option value="Chef de chantier">Chef de chantier</option>
+            <option value="Conducteur d'engins">Conducteur d'engins</option>
+            <option value="Chauffeur PL">Chauffeur PL</option>
+            <option value="Canalisateur">Canalisateur</option>
+            <option value="Maçon VRD">Maçon VRD</option>
+            <option value="Ouvrier TP">Ouvrier TP</option>
+            <option value="Géomètre-Topographe">Géomètre-Topographe</option>
+            <option value="Candidature spontanée">Candidature spontanée</option>
           </select>
         </div>
         <div class="form-field form-field--full">
@@ -362,24 +365,37 @@
           <textarea id="message" name="message" rows="5" placeholder="Décrivez votre expérience, vos motivations et votre disponibilité..."></textarea>
         </div>
         <div class="form-field form-field--full">
-          <label for="cv">CV (PDF, DOC — max 5 Mo)</label>
+          <label for="cv">CV <span aria-hidden="true">*</span> <small style="font-weight:400;text-transform:none;letter-spacing:0">(PDF ou Word — max 5 Mo)</small></label>
           <div class="file-upload">
-            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" />
+            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required />
             <label for="cv" class="file-upload__label">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              Choisir un fichier
+              Choisir votre CV
             </label>
-            <span class="file-upload__name">Aucun fichier sélectionné</span>
+            <span class="file-upload__name" id="cvFileName">Aucun fichier sélectionné</span>
+          </div>
+        </div>
+        <div class="form-field form-field--full">
+          <label for="lettre">Lettre de motivation <small style="font-weight:400;text-transform:none;letter-spacing:0">(PDF ou Word — max 5 Mo, optionnel)</small></label>
+          <div class="file-upload">
+            <input type="file" id="lettre" name="lettre_motivation" accept=".pdf,.doc,.docx" />
+            <label for="lettre" class="file-upload__label">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Choisir votre lettre
+            </label>
+            <span class="file-upload__name" id="lettreFileName">Aucun fichier sélectionné</span>
           </div>
         </div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn--orange btn--xl">Envoyer ma candidature</button>
+        <button type="submit" id="candidatureSubmitBtn" class="btn btn--orange btn--xl">Envoyer ma candidature</button>
         <a href="https://wa.me/590690584418?text=Bonjour%20Geotech%20Cara%C3%AFbes%2C%20je%20souhaite%20postuler%20pour%20un%20poste%20BTP%20%C3%A0%20Saint-Martin." target="_blank" rel="noopener" class="btn btn--dark btn--xl">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           Postuler par WhatsApp
         </a>
       </div>
+      <div id="candidatureSuccess" class="form-feedback form-feedback--success" hidden>✓ Candidature envoyée ! David Pivetta l'examinera en personne sous 48h.</div>
+      <div id="candidatureError" class="form-feedback form-feedback--error" hidden>Une erreur s'est produite. Veuillez réessayer ou postuler par WhatsApp.</div>
     </form>
   </div>
 </section>

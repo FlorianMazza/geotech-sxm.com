@@ -896,6 +896,32 @@ section { padding-block: clamp(4rem, 8vw, 7rem); }
 .form-field textarea { resize: vertical; min-height: 120px; }
 
 /* ════════════════════════════════════════════════════════════
+   FORMULAIRE DE CONTACT (section sombre)
+════════════════════════════════════════════════════════════ */
+.contact-form { margin-top: 2.5rem; }
+.section--dark .form-field label { color: rgba(255,255,255,.7); }
+.section--dark .form-field input,
+.section--dark .form-field select,
+.section--dark .form-field textarea {
+  background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.2); color: var(--white);
+}
+.section--dark .form-field input::placeholder,
+.section--dark .form-field textarea::placeholder { color: rgba(255,255,255,.3); }
+.section--dark .form-field input:focus,
+.section--dark .form-field select:focus,
+.section--dark .form-field textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,101,26,.15); }
+.section--dark .form-field select option { background: var(--navy); color: var(--white); }
+.section--dark .form-field select { color: rgba(255,255,255,.85); }
+
+/* Feedback messages */
+.form-feedback { margin-top: 1.5rem; padding: 1rem 1.4rem; border-radius: var(--radius); font-size: .92rem; font-weight: 600; line-height: 1.5; }
+.form-feedback--success { background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.35); color: #4ade80; }
+.form-feedback--error { background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.35); color: #f87171; }
+.candidature-form .form-feedback--success { background: rgba(34,197,94,.08); color: #16a34a; }
+.candidature-form .form-feedback--error { background: rgba(239,68,68,.08); color: #dc2626; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ════════════════════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════════════════════ */
 @media (max-width: 1100px) {

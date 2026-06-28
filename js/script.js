@@ -191,4 +191,74 @@
     });
   }
 
+  /* ── File upload — afficher le nom du fichier sélectionné ── */
+  qsa('input[type="file"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      var nameEl = qs('#' + input.id + 'FileName');
+      if (!nameEl) {
+        var wrap = input.closest('.file-upload');
+        nameEl = wrap ? wrap.querySelector('.file-upload__name') : null;
+      }
+      if (nameEl) {
+        nameEl.textContent = input.files.length ? input.files[0].name : 'Aucun fichier sélectionné';
+      }
+    });
+  });
+
+  /* ── Soumission formulaires via Web3Forms ─────────────────── */
+  function submitW3Form(formId, successId, errorId, btnId) {
+    var form = qs('#' + formId);
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      /* Validation HTML5 native */
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      var btn = qs('#' + btnId);
+      var origLabel = btn ? btn.innerHTML : '';
+      if (btn) { btn.innerHTML = 'Envoi en cours…'; btn.disabled = true; }
+
+      /* Masquer les messages précédents */
+      var successEl = qs('#' + successId);
+      var errorEl   = qs('#' + errorId);
+      if (successEl) successEl.hidden = true;
+      if (errorEl)   errorEl.hidden   = true;
+
+      var data = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success) {
+          if (successEl) successEl.hidden = false;
+          form.reset();
+          /* Remettre les libellés de fichiers */
+          qsa('.file-upload__name').forEach(function (el) {
+            el.textContent = 'Aucun fichier sélectionné';
+          });
+          /* Scroll vers le message de confirmation */
+          if (successEl) successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          if (errorEl) errorEl.hidden = false;
+        }
+      })
+      .catch(function () {
+        if (errorEl) errorEl.hidden = false;
+      })
+      .then(function () {
+        if (btn) { btn.innerHTML = origLabel; btn.disabled = false; }
+      });
+    });
+  }
+
+  submitW3Form('contactForm',     'contactSuccess',     'contactError',     'contactSubmitBtn');
+  submitW3Form('candidatureForm', 'candidatureSuccess', 'candidatureError', 'candidatureSubmitBtn');
+
 })();
