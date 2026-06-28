@@ -230,7 +230,7 @@
       })
       .then(function (res) { return res.json(); })
       .then(function (json) {
-        if (json.ok) {
+        if (json.ok || json.success === 'true' || json.success === true) {
           if (successEl) { successEl.hidden = false; successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
           form.reset();
           qsa('.file-upload__name').forEach(function (el) { el.textContent = 'Aucun fichier sélectionné'; });
