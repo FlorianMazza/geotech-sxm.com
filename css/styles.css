@@ -1132,4 +1132,4 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 .article-meta { color: rgba(255,255,255,.5) !important; font-size: .82rem; margin-top: 1rem; }
 
 /* Contact — pas de fleche automatique devant les coordonnees */
-.contact-details__item::before { content: none; }
+.content-section .contact-details__item::before { content: none; display: none; }
