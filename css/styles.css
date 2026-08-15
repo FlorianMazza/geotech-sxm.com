@@ -1176,7 +1176,10 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 }
 
 /* Menu mobile — accordeon "Services" (replie par defaut) */
-.mobile-services-toggle { display: flex; align-items: center; justify-content: space-between; gap: .5rem; cursor: pointer; }
+.mobile-services-toggle { display: flex; align-items: center; justify-content: space-between; gap: .5rem; cursor: pointer;
+  font-size: .9rem; font-weight: 500; color: var(--gray-light); text-transform: none; letter-spacing: normal;
+  padding: .7rem .9rem; border-radius: 8px; transition: background .15s, color .15s; }
+.mobile-services-toggle:hover { background: var(--navy-light); color: var(--white); }
 .mobile-services-toggle .mobile-chevron { flex-shrink: 0; color: var(--gray-light); transition: transform .25s var(--ease); }
 .navbar__mobile ul.services-open .mobile-services-toggle .mobile-chevron { transform: rotate(180deg); }
 .navbar__mobile .mobile-sub { display: none; }
