@@ -59,6 +59,37 @@
     a.addEventListener('click', closeMenu);
   });
 
+  /* ── Mobile "Services" accordion (collapsed by default) ── */
+  qsa('.mobile-services-toggle').forEach(function (t) {
+    function toggle() {
+      var ul = t.closest('ul');
+      if (!ul) return;
+      var open = ul.classList.toggle('services-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    t.addEventListener('click', toggle);
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* ── Language switcher: open on click/tap (works on touch) ── */
+  var langSwitch = qs('#langSwitch');
+  if (langSwitch) {
+    var langBtn = langSwitch.querySelector('.lang-switch__btn');
+    if (langBtn) {
+      langBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = langSwitch.getAttribute('aria-open') === 'true';
+        langSwitch.setAttribute('aria-open', open ? 'false' : 'true');
+        langBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+      document.addEventListener('click', function (e) {
+        if (!langSwitch.contains(e.target)) langSwitch.setAttribute('aria-open', 'false');
+      });
+    }
+  }
+
   /* ── Hero animations (staggered on load) ────────────────── */
   window.addEventListener('load', function () {
     qsa('.reveal-hero').forEach(function (el, i) {
