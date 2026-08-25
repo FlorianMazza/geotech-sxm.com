@@ -1062,8 +1062,10 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 .legal-table td:first-child { font-weight: 600; color: var(--navy); width: 40%; background: rgba(13,27,42,.03); }
 @media (max-width: 600px) {
   .legal-table, .legal-table tbody, .legal-table tr, .legal-table td { display: block; width: 100%; }
-  .legal-table td:first-child { border-bottom: none; }
-  .legal-table td:last-child { border-top: none; }
+  .legal-table tr { border: 1px solid var(--cream-dark); border-radius: 10px; margin-bottom: .75rem; background: var(--white); overflow: hidden; }
+  .legal-table td { border: none; padding: .3rem .9rem; }
+  .legal-table td:first-child { width: 100%; background: transparent; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: #8a9aac; font-weight: 700; padding-top: .7rem; padding-bottom: 0; }
+  .legal-table td:last-child { color: var(--navy); font-size: .95rem; padding-bottom: .7rem; }
 }
 
 
@@ -1188,3 +1190,12 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 .mobile-lang { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--navy-border); }
 .mobile-lang a { font-size: .8rem; font-weight: 600; color: var(--gray-light); background: var(--navy-light); padding: .4rem .7rem; border-radius: 999px; }
 .mobile-lang a.is-current { color: var(--orange); }
+
+/* ════════════════════════════════════════════════════════════
+   HERO — fix mobile: alignement haut + hauteur adaptative
+   (evite que le texte traduit, plus long, passe sous la barre fixe)
+════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero { align-items: flex-start; height: auto; min-height: 100svh; }
+  .hero__content { padding-top: clamp(96px, 15vh, 140px); padding-bottom: 3rem; }
+}
