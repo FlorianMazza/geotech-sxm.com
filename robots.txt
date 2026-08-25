@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://www.geotech-caraibes.com/sitemap.xml
+# ChatGPT Search — permet la decouverte et la citation dans ChatGPT
+User-agent: OAI-SearchBot
+Allow: /
 
-# Crawl delay (optionnel)
-Crawl-delay: 1
+Sitemap: https://www.geotech-sxm.com/sitemap.xml
