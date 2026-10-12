@@ -13,3 +13,6 @@ desktop.ini
 
 # Node (si utilisé plus tard)
 node_modules/
+
+# Dossier source des photos partenaire (HEIC, non web)
+Guamikeni/
