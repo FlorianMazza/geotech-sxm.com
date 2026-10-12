@@ -1222,8 +1222,9 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 }
 
 /* ===== Étapes ANC (réutilise .process__*) ===== */
-.anc-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2rem, 4vw, 3rem); }
-@media (max-width: 860px) { .anc-steps { grid-template-columns: repeat(2, 1fr); gap: 2.2rem; } }
+.anc-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2rem, 4vw, 3rem); position: relative; }
+.anc-steps::before { content: ""; position: absolute; top: 27px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(to right, rgba(232,101,26,.2), var(--orange) 12%, var(--orange) 88%, rgba(232,101,26,.2)); z-index: 0; pointer-events: none; }
+@media (max-width: 860px) { .anc-steps { grid-template-columns: repeat(2, 1fr); gap: 2.2rem; } .anc-steps::before { display: none; } }
 @media (max-width: 480px) { .anc-steps { grid-template-columns: 1fr; } }
 
 /* ===== Lignes média (texte + photo intégrés) ===== */
