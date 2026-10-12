@@ -1241,6 +1241,8 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 @media (max-width: 760px) {
   .media-row { grid-template-columns: 1fr; gap: 1.4rem; }
   .media-row__img, .media-row__img--portrait { aspect-ratio: 4/3; max-height: 400px; }
+  .media-row__text { order: 1; }
+  .media-row__img { order: 2; }
 }
 
 /* ===== Chips typologies ===== */
