@@ -1203,14 +1203,44 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 /* ===== Section fond blanc ===== */
 .section--white { background: var(--white); color: var(--navy); }
 
-/* ===== Bloc partenaire (Guamikeni) ===== */
-.partner-block { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; background: var(--white); border: 1px solid var(--cream-dark); border-radius: 14px; padding: 2rem 2.2rem; margin: 2.5rem 0; box-shadow: 0 10px 30px rgba(13,27,42,.06); }
-.partner-block__logo { flex: 0 0 240px; max-width: 240px; }
-.partner-block__logo img { width: 100%; height: auto; display: block; }
-.partner-block__text { flex: 1; min-width: 280px; }
-.partner-block__text p { margin-bottom: 1rem; }
-.partner-block__text p:last-child { margin-bottom: 0; margin-top: 1.2rem; }
-@media (max-width: 640px) {
-  .partner-block { padding: 1.4rem; gap: 1.2rem; }
-  .partner-block__logo { flex-basis: 180px; max-width: 180px; margin: 0 auto; }
+/* ===== Page ANC : intro centrée ===== */
+.anc-lead { max-width: 760px; margin: 0 auto; }
+.anc-lead .section-title { margin-bottom: 1.2rem; }
+.anc-lead > p { font-size: 1.02rem; color: #4a5568; line-height: 1.8; margin-bottom: 1rem; }
+
+/* ===== Spotlight partenaire (Guamikeni) ===== */
+.partner-spotlight { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; max-width: 1000px; margin: clamp(2.5rem, 5vw, 3.5rem) auto 0; background: var(--white); border: 1px solid var(--cream-dark); border-left: 4px solid var(--orange); border-radius: var(--radius-lg); padding: clamp(1.6rem, 4vw, 2.8rem); box-shadow: 0 18px 50px rgba(13,27,42,.08); }
+.partner-spotlight__logo { background: var(--navy); border-radius: var(--radius); padding: 1.6rem 1.4rem; display: flex; align-items: center; justify-content: center; }
+.partner-spotlight__logo img { width: 100%; height: auto; display: block; }
+.partner-spotlight__eyebrow { display: block; font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: .9rem; }
+.partner-spotlight__text p { color: #4a5568; line-height: 1.75; margin-bottom: 1rem; }
+.partner-spotlight__text .btn { margin-top: .5rem; }
+@media (max-width: 680px) {
+  .partner-spotlight { grid-template-columns: 1fr; gap: 1.6rem; }
+  .partner-spotlight__logo { max-width: 240px; }
 }
+
+/* ===== Étapes ANC (réutilise .process__*) ===== */
+.anc-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2rem, 4vw, 3rem); }
+@media (max-width: 860px) { .anc-steps { grid-template-columns: repeat(2, 1fr); gap: 2.2rem; } }
+@media (max-width: 480px) { .anc-steps { grid-template-columns: 1fr; } }
+
+/* ===== Lignes média (texte + photo intégrés) ===== */
+.media-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.media-row:last-child { margin-bottom: 0; }
+.media-row__img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 55px rgba(13,27,42,.18); background: var(--navy-mid); }
+.media-row__img--portrait { aspect-ratio: 4/5; }
+.media-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+.media-row__img:hover img { transform: scale(1.05); }
+.media-row__tag { display: block; font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: .7rem; }
+.media-row__text h3 { font-family: var(--font-serif); font-size: clamp(1.3rem, 2.4vw, 1.85rem); color: var(--navy); line-height: 1.25; margin-bottom: 1rem; }
+.media-row__text p { color: #4a5568; line-height: 1.8; margin-bottom: 1rem; }
+.media-row__text p:last-child { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .media-row { grid-template-columns: 1fr; gap: 1.4rem; }
+  .media-row__img, .media-row__img--portrait { aspect-ratio: 4/3; max-height: 400px; }
+}
+
+/* ===== Chips typologies ===== */
+.chips { display: flex; flex-wrap: wrap; gap: .6rem .7rem; margin-top: 1.5rem; }
+.chip { background: var(--cream); border: 1px solid var(--cream-dark); color: var(--navy); font-size: .85rem; font-weight: 600; padding: .55rem 1.05rem; border-radius: 999px; }
