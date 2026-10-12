@@ -876,6 +876,7 @@ section { padding-block: clamp(4rem, 8vw, 7rem); }
 /* ─── Page hero extras ──────────────────────────────────── */
 .section-title--xl { font-size: clamp(2.6rem, 5.5vw, 4.2rem) !important; }
 .page-hero__intro { font-size: 1.05rem; color: rgba(255,255,255,.7); max-width: 680px; line-height: 1.75; margin-top: 1.25rem; }
+.page-hero__actions { margin-top: 2.5rem; }
 .page-hero__stats { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2.5rem; }
 .page-hero__stat { display: flex; flex-direction: column; gap: .25rem; }
 .page-hero__stat-num { font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; color: var(--orange); line-height: 1; }
