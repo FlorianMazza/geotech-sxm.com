@@ -16,3 +16,6 @@ node_modules/
 
 # Dossier source des photos partenaire (HEIC, non web)
 Guamikeni/
+
+# Fichiers de travail (traductions à faire)
+traduction-*.txt
